@@ -288,12 +288,21 @@ const Index = () => {
                     const endX = 100 + 80 * Math.cos((endAngle * Math.PI) / 180);
                     const endY = 100 + 80 * Math.sin((endAngle * Math.PI) / 180);
 
+                    const colorMap: Record<string, string> = {
+                      'bg-emerald-500': '#10b981',
+                      'bg-purple-500': '#a855f7',
+                      'bg-pink-500': '#ec4899',
+                      'bg-blue-500': '#3b82f6',
+                      'bg-orange-500': '#f97316',
+                    };
+
                     return (
                       <path
                         key={idx}
                         d={`M 100 100 L ${startX} ${startY} A 80 80 0 ${largeArcFlag} 1 ${endX} ${endY} Z`}
-                        className={item.color.replace('bg-', 'fill-')}
+                        fill={colorMap[item.color] || '#8b5cf6'}
                         opacity="0.9"
+                        className="transition-opacity hover:opacity-100"
                       />
                     );
                   })}
